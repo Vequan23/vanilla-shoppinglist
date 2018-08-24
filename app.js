@@ -12,6 +12,8 @@ function loadEventListeners() {
   itemList.addEventListener("click", removeItem);
 
   clearButton.addEventListener("click", clearItems);
+
+  filter.addEventListener("keyup", filterItems);
 }
 
 function addItem(e) {
@@ -24,7 +26,11 @@ function addItem(e) {
 
     li.className = "shopping-list-item";
 
-    li.appendChild(document.createTextNode(`${itemInput.value}`));
+    items = document.querySelectorAll(".shopping-list-item");
+
+    li.appendChild(
+      document.createTextNode(`${items.length + 1}. ${itemInput.value}`)
+    );
 
     const link = document.createElement("a");
 
@@ -52,4 +58,11 @@ function clearItems(e) {
   while (itemList) {
     itemList.removeChild(itemList.firstChild);
   }
+}
+
+function filterItems(e) {
+  const text = e.target.value.toLowerCase();
+  list = document.querySelectorAll(".shopping-list-item");
+
+  console.log(list);
 }
