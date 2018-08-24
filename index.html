@@ -4,8 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <script src="./app.js"></script>
     <link rel="stylesheet" href="./css/main.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-rc.2/css/materialize.min.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ"
+        crossorigin="anonymous">
+
+
+
     <title>Js Sandbox</title>
 </head>
 
@@ -16,26 +21,33 @@
     </head>
     <main>
         <div class="shopping-list-card">
-            <h2>Shopping List</h2>
+            <h2 class="shopping-list-title">Shopping List</h2>
             <p>Add new item</p>
-            <input type="text">
-            <button>Add Item</button>
-            <hr>
-            <h3>Items</h3>
+            <form id="item-form" action="">
+                <input id="item" name="item" type="text" placeholder="Add Item">
+                <input type="submit" value="Add Item" class="btn">
+            </form>
 
             <div>
-                <ul class="shopping-list-items">
-                    <li class="shopping-list-item">List Item</li>
-                    <li class="shopping-list-item">List Item</li>
-                    <li class="shopping-list-item">List Item</li>
-                    <li class="shopping-list-item">List Item</li>
-                </ul>
+                <input id="filter" name="filter" type="text" placeholder="Search Tasks">
+
             </div>
 
-            <button>Clear Items</button>
+            <h3 class="item-list-heading">Items</h3>
 
+
+            <ul class="shopping-list-items">
+
+            </ul>
+
+
+            <button class="clear-items btn">Clear Items</button>
         </div>
     </main>
+    <script src="./app.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-rc.2/js/materialize.min.js"></script>
+
+
 </body>
 
 </html>
