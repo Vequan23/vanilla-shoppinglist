@@ -10,6 +10,8 @@ function loadEventListeners() {
   form.addEventListener("submit", addItem);
 
   itemList.addEventListener("click", removeItem);
+
+  clearButton.addEventListener("click", clearItems);
 }
 
 function addItem(e) {
@@ -17,27 +19,25 @@ function addItem(e) {
 
   if (itemInput.value === "") {
     alert("Please add an Item");
+  } else {
+    const li = document.createElement("li");
+
+    li.className = "shopping-list-item";
+
+    li.appendChild(document.createTextNode(`${itemInput.value}`));
+
+    const link = document.createElement("a");
+
+    link.className = "delete-item secondary-content";
+
+    link.innerHTML = `<i class="fas fa-trash-alt"></i>`;
+
+    li.appendChild(link);
+
+    itemList.appendChild(li);
+
+    itemInput.value = "";
   }
-
-  const li = document.createElement("li");
-
-  li.className = "shopping-list-item";
-
-  li.appendChild(document.createTextNode(`${itemInput.value}`));
-
-  const link = document.createElement("a");
-
-  link.className = "delete-item secondary-content";
-
-  link.innerHTML = `<i class="fas fa-trash-alt"></i>`;
-
-  li.appendChild(link);
-
-  itemList.appendChild(li);
-
-  itemInput.value = "";
-
-  //   console.log(itemList.length);
 }
 
 function removeItem(e) {
@@ -45,5 +45,11 @@ function removeItem(e) {
     if (confirm("Are you sure")) {
       e.target.parentElement.parentElement.remove();
     }
+  }
+}
+
+function clearItems(e) {
+  while (itemList) {
+    itemList.removeChild(itemList.firstChild);
   }
 }
